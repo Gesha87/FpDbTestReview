@@ -27,7 +27,7 @@ _ArgumentBuilder_
 ```php
 $replacement = $this->buildArgument($this->format, $args[$this->argumentNumber]);
 ```
-Нет проверки на отсутствие аргумента в массиве.
+Нет проверки на отсутствие аргумента в массиве `$args`.
 
 ---
 
