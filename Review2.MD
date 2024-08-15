@@ -1,5 +1,7 @@
 **Ревью варианта 2**
 
+_Database_
+
 ```php
 public function skip()
 {
@@ -60,12 +62,15 @@ private function buildAuto(mixed $argument, bool $isArraysAllowed = true): strin
 
 Нет обработки булева типа.
 
-Строка экранируется не `real_escape_string`.
+Строка экранируется не через `real_escape_string`.
 
 ---
 
 ```php
 private function buildArray(mixed $array, bool $isArraysAllowed = true): string
+{
+    ...
+}
 ```
 `$isArraysAllowed` - ненужная переменная, всегда false по сути.
 
@@ -76,7 +81,7 @@ private function buildArray(mixed $array, bool $isArraysAllowed = true): string
 ```php
 $isList = array_keys($array) === range(0, count($array) - 1);
 ```
-Есть функция `array_is_list`.
+Для этого есть функция `array_is_list`.
 
 ---
 
@@ -102,6 +107,9 @@ return sprintf('`%s`', $id);
 
 ```php
 private function buildIdArray(array $id): string
+{
+    ...
+}
 ```
 Не хватает проверки на пустоту массива.
 
@@ -150,7 +158,7 @@ private function buildBlock(Skipper $skipper, string $source, array $args): stri
 }
 ```
 `$this->argumentNumbers` - необязательное свойство.
-Номера параметров так же получить через `$this->argumentReplacers`.
+Номера параметров можно так же получить через `$this->argumentReplacers`.
 
 ---
 
@@ -177,6 +185,6 @@ if ($skip) {
 ```
 Полностью отсутствует проверка строковых литералов.
 
-Проверка комментариев, которая не требовалась, — нерабочая.
+Проверка комментариев, которая и не требовалась, всё равно нерабочая.
 Встретив `*/` или `--`, всё, что после, будет считаться комментарием.
 Потому что `$char` не обновляется.
