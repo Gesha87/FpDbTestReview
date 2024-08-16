@@ -157,7 +157,7 @@ private function buildBlock(Skipper $skipper, string $source, array $args): stri
     ...
 }
 ```
-`$this->argumentNumbers` - необязательное свойство.
+Не понял, зачем нужно свойство `$this->argumentNumbers`.
 Номера параметров можно так же получить через `$this->argumentReplacers`.
 
 ---
